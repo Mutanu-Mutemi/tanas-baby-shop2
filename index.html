@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tana's Baby Shop | Lovingly Curated</title>
+    <style>
+        :root {
+            --sage: #8DAA91;
+            --cream: #FFF9F3;
+            --rose: #D4A373;
+            --stone: #555;
+        }
+
+        body {
+            font-family: 'serif', Georgia, serif;
+            margin: 0;
+            background-color: var(--cream);
+            color: var(--stone);
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: var(--sage);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Product Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .badge-new { background: #e8f5e9; color: var(--sage); }
+        .badge-thrift { background: #fdf2e9; color: var(--rose); }
+
+        /* The Pop-up Overlay */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .btn:hover { border-color: var(--sage); background: #f9fdf9; }
+    </style>
+</head>
+<body>
+
+<div id="overlay">
+    <div class="modal" id="modal-content">
+        <h2>Welcome to Tana's</h2>
+        <p>A safe, judgement-free space for every mama. How can we help you today?</p>
+        <button class="btn" onclick="nextStep('Baby Essentials')">I'm looking for Baby Essentials</button>
+        <button class="btn" onclick="nextStep('Self-Care')">I need some Mum Self-Care</button>
+        <button class="btn" onclick="nextStep('Nursing')">Nursing & Feeding help</button>
+    </div>
+</div>
+
+<header>
+    <h1 class="logo">Tana's Baby Shop</h1>
+    <p>Brand New & Pre-loved with Love</p>
+</header>
+
+<div class="hero">
+    <h2>Nurturing you and your little one.</h2>
+    <p>Sustainability and affordability at the heart of everything we do.</p>
+</div>
+
+<div class="grid">
+    <div class="card">
+        <span class="badge badge-new">New</span>
+        <h3>Organic Onesie</h3>
+        <p>$22.00</p>
+        <small>Tana's Note: Perfectly soft for newborn skin.</small>
+    </div>
+    <div class="card">
+        <span class="badge badge-thrift">Pre-loved</span>
+        <h3>Wooden Play Gym</h3>
+        <p>$35.00</p>
+        <small>Tana's Note: Sustainable and ready for a second home.</small>
+    </div>
+</div>
+
+<script>
+    function nextStep(choice) {
+        const content = document.getElementById('modal-content');
+        content.innerHTML = `
+            <h2>A lovely choice!</h2>
+            <p>Do you prefer <b>Brand New</b> or <b>Sustainable Pre-loved</b> items?</p>
+            <button class="btn" onclick="closeModal()">Show me Brand New</button>
+            <button class="btn" onclick="closeModal()">Show me Pre-loved (Thrift)</button>
+        `;
+    }
+
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
